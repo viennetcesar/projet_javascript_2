@@ -265,6 +265,7 @@ figure{
 	margin-top: 60px;
 	margin-left: 380px;
 	width: 379px;
+	z-index: 1;
 }
 
 input {
@@ -446,4 +447,42 @@ footer .mentions-legales {
 
 .lien-modifier:hover {
 	color: #B1663C;	
+}
+
+
+/************************* pop-up si email ou mpd invalides ************************************/
+
+.pop-up-off {
+	display: none;
+}
+
+.paragraphe-pop-up-off {
+	display: none;
+}
+
+.pop-up-on {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 240px;
+	height: 100px;
+	z-index: 2;
+	border-radius: 20px;
+	background-color: black;
+	color: white;
+	position: absolute;
+    top: 35%;
+    left: 40%;
+}
+
+.paragraphe-pop-up-on {
+	display: flex !important; /*le !important n'a aucun effet ? */
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	width: 100%;
+	font-size: 18px;
+	font-weight: bold;
+	margin-left: 8px;
 }

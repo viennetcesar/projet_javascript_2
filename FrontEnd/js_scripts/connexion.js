@@ -66,10 +66,34 @@ const connexion = document.querySelector(".se-connecter")
                 }
             }else{
                 console.log("email ou mot de passe incorrect")
+
+
+                const popUp = document.querySelector(".pop-up-off")
+                const paragraphePopUp = document.querySelector(".paragraphe-pop-up-off")
+                popUp.classList.remove("pop-up-off")
+                popUp.classList.add("pop-up-on")
+                paragraphePopUp.classList.remove("paragraphe-pop-up-off")
+                paragraphePopUp.classList.add("paragraphe-pop-up-on")
+
+                 
             }
                 
                 
 
+            })
+
+
+/* Si la popup s'est déclenchée, à l'évènement "change" on fait en sorte qu'elle disparaisse */ 
+
+            
+            const popUpOut = document.querySelector(".pop-up-off")
+            const paragraphePopUpOut = document.querySelector(".paragraphe-pop-up-off")
+
+            popUpOut.addEventListener("click", ()=> {
+                popUpOut.classList.remove("pop-up-on")
+                popUpOut.classList.add("pop-up-off")
+                paragraphePopUpOut.classList.remove("paragraphe-pop-up-on")
+                paragraphePopUpOut.classList.add("paragraphe-pop-up-off")
             })
 
 

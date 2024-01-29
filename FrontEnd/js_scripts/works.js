@@ -138,7 +138,7 @@ if (tokenLocal != null) {
 
 
 
-/*reprendre cette partie*/
+/*Au clic sur logout l'event listeneur réinitialise la page projet en non loggué*/
 
 
 const logger = document.querySelector(".lien-login")
