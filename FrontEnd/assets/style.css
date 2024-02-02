@@ -486,3 +486,144 @@ footer .mentions-legales {
 	font-weight: bold;
 	margin-left: 8px;
 }
+
+
+
+/********************************* La modale *****************************************************/
+
+.corps-modale-off {
+	display: none;
+}
+
+.corps-modale-on {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	left: 405px;
+	top: 660px;
+	width: 630px;
+	height: 750px;
+	background-color: white;
+	border-radius: 10px;
+	box-sizing: border-box;
+}
+
+.modale-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.corps-modale-on:hover {
+	border: 2px solid #00BFFF;
+	box-sizing: border-box;
+}
+
+.croix {
+	margin-top: 5%;
+	margin-left: 92%;
+	padding: 4px;
+}
+
+.croix:hover {
+	border: 2px solid #00BFFF;
+}
+
+
+#corps-modale h2{
+	margin-bottom: 0px;
+	font-weight: 400px;
+}
+
+
+.galerie-photos {
+	margin-top: 5%;
+	color: black;
+	box-sizing: border-box;
+	font-family: "Work Sans";
+	font-weight: 400px;
+	margin-bottom: 2%;
+}
+
+.galerie-photos:hover {
+	text-decoration: underline #00BFFF;
+	padding-bottom: 0px;
+}
+
+.bouton-ajouter-photo {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 237px;
+	height: 36px;
+	border-radius: 60px;
+	background-color: #1D6154;
+	color: white;
+	font-size: 14px;
+	font-family: 'Syne';
+	margin-top: 30px;
+	/* position: absolute;
+	bottom: 10%; */
+}
+
+.bouton-ajouter-photo:hover {
+	opacity: 0.8;
+}
+
+.div-bordure {
+	width: 420px;
+	border-top: 1px solid gray;
+	margin-top: 60px;
+	/* position: absolute;
+	bottom: 15%; */
+}
+
+.div-bordure:hover {
+	border-top: 2px solid #00BFFF;
+}
+
+.affichage-photos-modale {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 70%;
+	margin-top: 15px;
+}
+
+
+.figure-modale {
+	position: relative;
+	width: 78px;
+	height: 102px;
+	margin-left: 2%;
+	margin-top: 7%;
+	box-sizing: content-box;
+	z-index: 1;
+}
+
+.figure-modale:hover {
+	border: 2px solid #00BFFF;
+	box-sizing: border-box;
+}
+
+.image-modale{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.supprimer-la-galerie {
+	color: red;
+	margin-top: 25px;
+}
+
+.svg-delete {
+	position: absolute;
+	z-index: 2;
+	width: 30px;
+	height: 30px;
+	top: 5%;
+	left: 75%;
+} 

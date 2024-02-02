@@ -4,7 +4,9 @@ console.log(elements)
 
 /*Création d'une classe utilisable partout*/
 // export default class Work{
-    function recupDataWorks(elements){
+
+
+function recupDataWorks(elements){
 
         for (let i=0; i<elements.length; i++){
     
