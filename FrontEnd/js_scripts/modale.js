@@ -38,6 +38,7 @@ creationDOM(elements)
 
 const lienModale = document.querySelector(".lien-modale")
 const corpsModale = document.getElementById("corps-modale")
+const croix = document.querySelector(".croix")
 
 lienModale.addEventListener("click", ()=>{
     corpsModale.classList.remove("corps-modale-off")
@@ -45,7 +46,7 @@ lienModale.addEventListener("click", ()=>{
     console.log(lienModale)
 })
 
-corpsModale.addEventListener("click", ()=>{
+croix.addEventListener("click", ()=>{
     corpsModale.classList.remove("corps-modale-on")
     corpsModale.classList.add("corps-modale-off")
 })
