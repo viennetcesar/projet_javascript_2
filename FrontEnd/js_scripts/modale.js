@@ -36,20 +36,83 @@ function creationDOM(elements){
 creationDOM(elements)
 
 
-const lienModale = document.querySelector(".lien-modale")
+const lienModale = document.querySelector(".lien-modale") // récupère tout le corps de la modale qui est relié au lien
 const corpsModale = document.getElementById("corps-modale")
 const croix = document.querySelector(".croix")
 
-lienModale.addEventListener("click", ()=>{
+
+
+/*ce code fonctionne et permet d'ouvrir la modale en cliquant sur "modifier" et fermer ma modale en cliquant
+n'importe où sur l'écran */
+
+ lienModale.addEventListener("click", ()=>{
+    console.log("le corps modale est récupéré")
     corpsModale.classList.remove("corps-modale-off")
     corpsModale.classList.add("corps-modale-on")
-    console.log(lienModale)
-})
+    const theDiv = document.createElement("div")
+    theDiv.classList.add("the-div")
+    document.body.appendChild(theDiv)
+    console.log(theDiv)
 
-croix.addEventListener("click", ()=>{
-    corpsModale.classList.remove("corps-modale-on")
-    corpsModale.classList.add("corps-modale-off")
-})
+
+    theDiv.addEventListener("click", ()=>{
+        console.log("on rentre dans la partie the div")
+        corpsModale.classList.remove("corps-modale-on")
+        corpsModale.classList.add("corps-modale-off")
+        theDiv.classList.add("the-div-off")
+    })
+ })
+
+
+
+
+
+
+
+
+
+
+
+ // ce code fonctionne et permet de cliquer sur la croix et fermer la modale
+
+
+//  croix.addEventListener("click", ()=>{
+//      corpsModale.classList.remove("corps-modale-on")
+//      corpsModale.classList.add("corps-modale-off")
+//  })
+
+
+
+/**************************************************************************************/
+
+
+
+
+// lienModale.addEventListener("click", (event) => {
+//     event.preventDefault()
+//     const modale = document.querySelector(event.target.getAttribute("href"))
+//     console.log(modale)
+//     modale.style.display = null
+//     console.log(modale)
+//     modale.addEventListener("click", (event)=>{
+//         event.preventDefault()
+//         modale.style.display = "none"
+//     })
+    
+// })
+
+
+
+
+
+
+
+
+
+// croix.addEventListener("click", ()=>{
+//     corpsModale.classList.remove("corps-modale-on")
+//     corpsModale.classList.add("corps-modale-off")
+// })
 
 
 

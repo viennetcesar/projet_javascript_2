@@ -22,7 +22,7 @@
     <script type="module" src="js_scripts/modale.js"></script>
   </head>
   <body>
-    <div class="barre-edition-off">
+    <div id="black-header" class="barre-edition-off">
       <svg
         width="16"
         height="16"
@@ -102,14 +102,13 @@
               />
             </svg>
 
-            <a href="#corps-modale" class="modifier-connecte-off lien-modale"
-              >modifier</a
-            >
+            <a href="#corps-modale" class="lien-modale modifier-connecte-off">modifier</a
+            > 
           </div>
           <!--div masquée en hors connexion excepté le H2-->
 
           <!--Partie modale -->
-          <aside id="corps-modale" class="corps-modale-off">
+          <aside id="corps-modale" class="corps-modale-off"> <!--style="display: none;" -->
             <svg
               width="12"
               height="12"
@@ -159,7 +158,7 @@
 
         <form action="#" method="post">
           <label for="name">Nom</label>
-          <input type="text" name="name" id="name" />
+          <input type="text" name="name" id="name"/>
           <label for="email">Email</label>
           <input type="email" name="email" id="email" />
           <label for="message">Message</label>
