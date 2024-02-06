@@ -17,7 +17,7 @@ function creationDOM(elements){
         const imageModale = document.createElement("img")
         imageModale.src = elements[i].imageUrl
         imageModale.classList.add("image-modale")
-        const iconeDelete = document.createElement("i")
+        const iconeDelete = document.createElement("i") //création de l'icône
         iconeDelete.classList.add("fa-regular")
         iconeDelete.classList.add("fa-trash-can")
         iconeDelete.classList.add("svg-delete")
@@ -30,10 +30,36 @@ function creationDOM(elements){
         baliseFigure.appendChild(iconeDelete)
         baliseFigure.appendChild(textePhoto)
 
+        // ensuite on code la suppression directement dans cette fonction
+
+        iconeDelete.addEventListener("click", async (event)=>{
+            console.log("vous venez de cliquer sur l'icône de suppression")
+            event.preventDefault()
+            const idImage = figure.id
+            const tokenPresent = window.localStorage.getItem("token")
+            console.log("en cliquant sur la poubelle j'ai récupéré mon token : " + tokenPresent)
+            // jusqu'ici tout fonctionne
+            let response = await fetch(`http://localhost:5678/api/works/${idImage}`,
+                          {
+                            method: "DELETE",
+                            headers: {
+                              accept: "*/*",
+                              Authorization: `Bearer ${tokenPresent}`,
+                            },
+                          }
+                        )
+            let responseJson = await response.json() // converti le corps de la réponse en json
+            console.log(responseJson)
+
+        })
+
     }
 }
 
 creationDOM(elements)
+// étant donné que quand je supprime un élément en cliquant sur l'icône poubelle
+// il se supprime dans l'API, la fontion creationDOM est relancée automatiquement
+// et récupère seulement ce qui se trouve encore dans l'API
 
 
 const lienModale = document.querySelector(".lien-modale") // récupère tout le corps de la modale qui est relié au lien
@@ -56,7 +82,6 @@ n'importe où sur l'écran */
 
 
     theDiv.addEventListener("click", ()=>{
-        console.log("on rentre dans la partie the div")
         corpsModale.classList.remove("corps-modale-on")
         corpsModale.classList.add("corps-modale-off")
         theDiv.classList.add("the-div-off")
@@ -66,6 +91,38 @@ n'importe où sur l'écran */
 
 
 
+
+
+
+
+
+ /***********************************************poster une photos sur l'API sans utiliser les objets FormData *****/
+
+// const recuperationToken = window.localStorage.getItem("token")
+
+// const donneesImage = {
+//     "image":  "./assets/images/structures-thermopolis.png" ,
+//     "title": "structures-thermopolis",
+//     "category": "8",
+//   }
+
+// const chargePost = JSON.stringify(donneesImage)
+
+// console.log("la charge : " + chargePost)
+
+// let requetePost = fetch("http://localhost:5678/api/works", 
+// {
+//     method: "POST",
+//     headers: {  accept : "application/json",
+//                 "Content-Type": "multipart/form-data",
+//                 Authorization: `Bearer ${recuperationToken}`
+//             },
+//     body: chargePost
+    
+// })
+
+// let reponseRequete = await requetePost.json()
+// console.log(reponseRequete)
 
 
 
@@ -86,52 +143,6 @@ n'importe où sur l'écran */
 /**************************************************************************************/
 
 
-
-
-// lienModale.addEventListener("click", (event) => {
-//     event.preventDefault()
-//     const modale = document.querySelector(event.target.getAttribute("href"))
-//     console.log(modale)
-//     modale.style.display = null
-//     console.log(modale)
-//     modale.addEventListener("click", (event)=>{
-//         event.preventDefault()
-//         modale.style.display = "none"
-//     })
-    
-// })
-
-
-
-
-
-
-
-
-
-// croix.addEventListener("click", ()=>{
-//     corpsModale.classList.remove("corps-modale-on")
-//     corpsModale.classList.add("corps-modale-off")
-// })
-
-
-
-
-/*
-
-idée pour utiliser une seule fonction d'initialisation du DOM en fonction de la valeur de la balise Parent
-pb --> impossible d'importer la fonction d'initialisation du DOM du fichier works sans erreur
-
-const baliseLieuInsertion = document.querySelector(".affichage-photos-modale")
-console.log(baliseLieuInsertion.className)
-const baliseLieuInsertionClassName = baliseLieuInsertion.className
-
-if (baliseLieuInsertionClassName === ".affichage-photos-modale"){
-    console.log("coucou vous êtes bien sur la modale")
-}else{
-    console.log("vous êtes sur la gallerie")
-}
-*/
 
 
 

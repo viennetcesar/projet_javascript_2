@@ -509,6 +509,7 @@ footer .mentions-legales {
 	border-radius: 10px;
 	box-sizing: border-box;
 	overflow: scroll;
+	z-index: 3;
 }
 
 .modale-wrapper {
@@ -654,4 +655,56 @@ footer .mentions-legales {
 
 .the-div-off {
 	display: none;
+}
+
+
+
+
+
+/****************************** Modale photo POST ******************************************************/
+
+.cadre-modale-post-off {
+	display: none;
+}
+
+.cadre-modale-post-on {
+	position: absolute;
+	left: 405px;
+	top: 660px;
+	width: 630px;
+	height: 750px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	z-index: 4;
+	background-color: white;
+}
+
+.the-div2 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 3000px;
+	z-index: 2;
+	opacity: 0;
+}
+
+.the-div2-off {
+	display: none;
+}
+
+.icones-fleche-et-croix {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.cadre-modale-post h2 {
+	color: black;
+}
+
+.cadre-modale-post input {
+	width: 420px;
+	height: 51px;
 }
