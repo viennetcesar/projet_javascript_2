@@ -160,16 +160,18 @@
 
             <h2>Ajout photo</h2>
 
-            <form>
+            <form method="post" class="formulaire">
 
               <label for="file">Ajouter photo</label><br><br>
-              <input type="file" name="file"><br>
+              <input type="file" name="file" id="file"><br>
 
               <label for="titre">Titre</label><br><br>
-              <input type="text" name="titre"><br>
+              <input type="text" name="titre" id="titre"><br>
               
               <label for="categorie">Catégorie</label><br><br>
-              <input type="text" name="categorie"><br>
+              <input type="text" name="categorie" id="categorie"><br>
+
+              <input type="submit" name="soumettre" id="soumettre" value="Valider">
             </form>
 
           </aside>
