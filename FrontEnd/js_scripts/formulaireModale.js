@@ -34,23 +34,14 @@ formulaire.addEventListener("submit", async (event)=>{
 
     // l'objet FormData prend le formulaire et le formate pour qu'il soit exploitable
     const formData = new FormData(formulaire) 
-
-    // const form = {
-
-    //     "titre": document.getElementById("titre"),
-    //     "file": document.getElementById("file"),
-    //     "categorie": document.getElementById("categorie")
-    // }
-
-    
-    const reponse = fetch("http://localhost:5678/api/works", {
+  
+    const reponse = await fetch('http://localhost:5678/api/works', {
         method: "POST",
-        headers : {
-            'Authorization' : `Bearer ${leToken}`
-             } ,
-        body: formData,
+        headers : { "Authorization" : `Bearer ${leToken}`} ,
+        body: formData
     })
-    .then(reponse => reponse.json())
-    .then(reponse => console.log(reponse))
 
+    let reponseJson = await reponse.json()
+    console.log(reponseJson)
 })
+

@@ -31,6 +31,15 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
+
+main {
+	max-width: 1440px;
+	margin-left: 17%;
+	margin-right: 17%;
+}
+
+
+
 a {
 	text-decoration: none;
 	color: black;
@@ -57,7 +66,7 @@ table {
 body {
 	position: relative;
 	z-index: 1;
-	max-width: 1140px;
+	/* max-width: 1140px; */
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
@@ -66,8 +75,11 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 0;
+	margin-top: 50px; 
+	max-width: 1440px;
 }
+
 section {
 	margin: 50px 0
 }
@@ -213,10 +225,16 @@ footer nav ul {
 }
 
 .bouton{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 	height: 100%;
 	border-radius: 60px;
 	color: #1D6154;
-	background-color: white;
+	border: 1px solid;
+	border-color:#1D6154 ;
+	background-color: #FFFEF8;;
 	font-family: 'Syne';
 	margin-left: 10px;
 	margin-bottom: 20px;
@@ -239,7 +257,7 @@ footer nav ul {
 }
 
 .bouton:hover{
-	color: white;
+	color: #FFFEF8;
 	background-color: #1D6154;
 }
 
@@ -353,10 +371,13 @@ footer .mentions-legales {
 
 
 .barre-edition-on {
+	margin-left: 0px;
+	margin-right: 0px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	background-color: black;
+	width: 100%;
 	height: 59px;
 }
 
@@ -505,6 +526,8 @@ footer .mentions-legales {
 	top: 660px;
 	width: 630px;
 	height: 750px;
+	border: 2px solid;
+	border-color: transparent;
 	background-color: white;
 	border-radius: 10px;
 	box-sizing: border-box;
@@ -519,18 +542,20 @@ footer .mentions-legales {
 }
 
 .corps-modale-on:hover {
-	border: 2px solid #00BFFF;
+	border-color: #00BFFF;
 	box-sizing: border-box;
 }
 
 .croix {
+	border: 2px solid ;
+	border-color: transparent;
 	margin-top: 5%;
 	margin-left: 92%;
 	padding: 4px;
 }
 
 .croix:hover {
-	border: 2px solid #00BFFF;
+	border-color: #00BFFF;
 }
 
 
@@ -555,6 +580,8 @@ footer .mentions-legales {
 }
 
 .contour-bouton-ajouter-photo {
+	border: 2px solid;
+	border-color: transparent;
 	width: 237px;
 	height: 36px;
 	margin-top: 30px;
@@ -575,19 +602,17 @@ footer .mentions-legales {
 }
 
 .contour-bouton-ajouter-photo:hover {
-	border: 2px solid #00BFFF;
+	border-color: #00BFFF;
 }
 
 .div-bordure {
 	width: 420px;
-	border-top: 1px solid gray;
+	border-top: 2px solid #ededed;
 	margin-top: 60px;
-	/* position: absolute;
-	bottom: 15%; */
 }
 
 .div-bordure:hover {
-	border-top: 2px solid #00BFFF;
+	border-color: #00BFFF;
 }
 
 .affichage-photos-modale {
@@ -601,23 +626,22 @@ footer .mentions-legales {
 
 .figure-modale {
 	position: relative;
+	border: 2px solid;
+	border-color: transparent;
 	width: 78px;
 	height: 102px;
 	margin-left: 2%;
 	margin-top: 7%;
-	box-sizing: content-box;
 	z-index: 1;
 }
 
 .figure-modale:hover {
-	border: 2px solid #00BFFF;
-	box-sizing: border-box;
+	border-color: #00BFFF;
 }
 
 .image-modale{
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
 }
 
 .supprimer-la-galerie {
@@ -625,13 +649,15 @@ footer .mentions-legales {
 	flex-direction: row;
 	justify-content: center;
 	color: red;
+	border: 2px solid;
+	border-color: transparent;
 	margin-top: 25px;
 	width: 230px;
 	height: 17px;
 }
 
 .supprimer-la-galerie:hover {
-	border: 2px solid #00BFFF;
+	border-color:  #00BFFF;
 }
 
 .svg-delete {
