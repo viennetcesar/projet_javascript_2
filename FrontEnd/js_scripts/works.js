@@ -2,6 +2,7 @@ const reponse = await fetch("http://localhost:5678/api/works")
 const elements = await reponse.json()
 console.log(elements)
 
+
 /*Création d'une classe utilisable partout*/
 // export default class Work{
 
@@ -93,7 +94,7 @@ hotels.addEventListener("click", function(){
 
 let tokenLocal = window.localStorage.getItem("token")
 
-console.log("Avant de logout le token vaut : " + tokenLocal)
+// console.log("Avant de logout le token vaut : " + tokenLocal)
 
 if (tokenLocal != null) {
     const logger = document.querySelector(".lien-login")

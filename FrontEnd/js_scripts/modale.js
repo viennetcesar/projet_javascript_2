@@ -21,6 +21,7 @@ function creationDOM(elements){
         iconeDelete.classList.add("fa-regular")
         iconeDelete.classList.add("fa-trash-can")
         iconeDelete.classList.add("svg-delete")
+       
         const textePhoto = document.createElement("p")
         textePhoto.innerText = "éditer"
         const userId = elements[i].userId
