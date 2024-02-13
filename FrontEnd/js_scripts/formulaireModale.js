@@ -74,15 +74,15 @@ formulaire.addEventListener("submit", async (event)=>{
 
     // l'objet FormData prend le formulaire et le formate pour qu'il soit exploitable
     const formData = new FormData(formulaire) 
+    console.log(formData)
   
     const reponse = await fetch('http://localhost:5678/api/works', {
         method: "POST",
-        headers : { "Authorization" : `Bearer ${leToken}`} ,
+        headers : { Authorization : `Bearer ${leToken}`} ,
         body: formData
     })
-
-    let reponseJson = await reponse.json()
-    console.log(reponseJson)
+    .then(res => res.json())
+    .then(res => console.log(res))
 })
 
 
@@ -117,7 +117,7 @@ formulaire.addEventListener("submit", (event)=>{
     try{
         event.preventDefault()
 
-        let photoFormulaire = document.getElementById("file")
+        let photoFormulaire = document.getElementById("image-chargement-input")
         verifierChamp(photoFormulaire)
 
         let titreFormulaire = document.getElementById("titre")
@@ -134,5 +134,33 @@ formulaire.addEventListener("submit", (event)=>{
 
 messageErreurAffichage.addEventListener("click", ()=>{
     messageErreurAffichage.innerText = ""
+})
+
+
+
+
+
+/*************************** remplir image après download ****************************/
+/*code direct dans la page html dans une balise script */
+
+/*faire apparaître à nouveau les éléments cachés en cliquant sur la photo downloadée*/
+
+const imageARemplir = document.querySelector(".image-a-remplir")
+const svgAjoutPhoto = document.querySelector(".svg-ajout-photo")
+const boutonFile = document.querySelector(".bouton-file")
+const formatJpg = document.querySelector(".format-jpg")
+
+imageARemplir.addEventListener("click", ()=>{
+
+    svgAjoutPhoto.classList.remove("rectangle-svg-ajout-photo-off")
+    boutonFile.classList.remove("bouton-file-off")
+    formatJpg.classList.remove("format-jpg-off")
+
+    svgAjoutPhoto.classList.add("rectangle-svg-ajout-photo")
+    boutonFile.classList.add("bouton-file")
+    formatJpg.classList.add("format-jpg")
+
+    imageARemplir.classList.remove("image-a-remplir-on")
+    imageARemplir.classList.add("image-a-remplir-off")
 })
 

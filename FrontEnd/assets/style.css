@@ -896,17 +896,22 @@ footer .mentions-legales {
 	height: 76px;
 	border: 2px solid;
 	border-color: transparent;
-	margin-bottom: 10px;
 }
 
 .rectangle-svg-ajout-photo:hover {
 	border-color: #00BFFF;
 }
 
+.rectangle-svg-ajout-photo-off {
+	display: none;
+}
+
+
 .format-jpg {
-	size: 10px;
+	font-size: 10px;
+	font-weight: 400;
 	color: #444444;
-	margin-top: 10px;
+	margin-top: 13px;
 }
 
 .format-jpg:hover {
@@ -915,12 +920,16 @@ footer .mentions-legales {
 	text-decoration-thickness: 2px;
 }
 
+.format-jpg-off {
+	display: none;
+}
+
 .rectangle-bouton-post-ajouter-photo {
 	position: relative;
 	border: 2px solid;
 	border-color: transparent;
 	width: 178px;
-	height: 36px;
+	height: 32px;
 }
 
 .rectangle-bouton-post-ajouter-photo:hover {
@@ -936,21 +945,58 @@ footer .mentions-legales {
 	width: 100%;
 	height: 100%;
 	background-color: #CBD6DC;
-	position: absolute;
-	/* z-index: 1; */
 }
 
 .bouton-post-ajouter-photo p {
 	color: #306685;
 }
 
-#file {
-	width: 150px;
-	height: 35px;
-	position: absolute;
+.bouton-file {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 178px;
+	height: 36px;
+	position: relative;
 	z-index: 0;
-	padding-left: 5px;
+	background-color: transparent;
+	border-color: transparent;
+} /*parent de l'input image et du paragraphe*/
+
+.bouton-file-off {
+	display: none;
 }
+
+#image-chargement-input {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	width: 100px;
+	height: 36px;
+	z-index: 1;
+	opacity: 0; /*pour cacher l'input tout en le laissant au premier plan*/
+}
+
+
+.paragraphe-ajouter-photo {
+	/* border: 2px solid;
+	border-color: transparent; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 190px;
+	height: 36px;
+	border-radius: 50px;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 10px;
+	background-color: #CBD6DC;
+	color: #306685;
+}
+
+/* .paragraphe-ajouter-photo:hover{
+	border-color: #00BFFF;
+} */
 
 .message-erreur-affichage {
 	width: auto;
@@ -974,4 +1020,21 @@ footer .mentions-legales {
 
 #categorie:hover {
 	border-color: #00BFFF;
+}
+
+
+/***************************************** image à remplir ***************************************************/
+
+.image-a-remplir {
+	width: 0;
+	height: 0;
+}
+
+.image-a-remplir-on {
+	width: 200px;
+	height: 100%;
+}
+
+.image-a-remplir-off {
+	display: none;
 }
