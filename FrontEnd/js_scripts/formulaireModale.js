@@ -63,7 +63,7 @@ boutonAjouterPhoto.addEventListener("click", (event)=>{
 
 
 
-/************************************Partie POST FormData*******************************/
+/************************************Partie POST FormData requête POST*******************************/
 
 const formulaire = document.querySelector(".formulaire")
 const leToken = window.localStorage.getItem("token")
@@ -85,19 +85,6 @@ formulaire.addEventListener("submit", async (event)=>{
     .then(res => console.log(res))
 })
 
-
-
-/*****************afficher l'input POST quand on clique sur le bouton "ajouter photo" *******/
-
-// const boutonPostAjouterPhoto = document.querySelector(".rectangle-bouton-post-ajouter-photo")
-// const file = document.getElementById("file")
-// const divFilePost = document.getElementById("div-file-post")
-
-// boutonPostAjouterPhoto.addEventListener("click", ()=>{
-//     console.log("je viens de cliquer")
-    
-
-// })
 
 
 
@@ -146,17 +133,17 @@ messageErreurAffichage.addEventListener("click", ()=>{
 /*faire apparaître à nouveau les éléments cachés en cliquant sur la photo downloadée*/
 
 const imageARemplir = document.querySelector(".image-a-remplir")
-const svgAjoutPhoto = document.querySelector(".svg-ajout-photo")
+const rectangleSvgAjoutPhoto = document.querySelector(".rectangle-svg-ajout-photo")
 const boutonFile = document.querySelector(".bouton-file")
 const formatJpg = document.querySelector(".format-jpg")
 
 imageARemplir.addEventListener("click", ()=>{
 
-    svgAjoutPhoto.classList.remove("rectangle-svg-ajout-photo-off")
+    rectangleSvgAjoutPhoto.classList.remove("rectangle-svg-ajout-photo-off")
     boutonFile.classList.remove("bouton-file-off")
     formatJpg.classList.remove("format-jpg-off")
 
-    svgAjoutPhoto.classList.add("rectangle-svg-ajout-photo")
+    rectangleSvgAjoutPhoto.classList.add("rectangle-svg-ajout-photo")
     boutonFile.classList.add("bouton-file")
     formatJpg.classList.add("format-jpg")
 
@@ -164,3 +151,25 @@ imageARemplir.addEventListener("click", ()=>{
     imageARemplir.classList.add("image-a-remplir-off")
 })
 
+
+
+
+/****************************** Revenir en arrière sur la modale précédente en fermant la modale POST *******/
+
+const svgFlecheBack = document.querySelector(".svg-fleche-back")
+const cadreModalePostOn = document.querySelector(".cadre-modale-post")
+
+svgFlecheBack.addEventListener("click", ()=>{
+
+    cadreModalePostOn.classList.remove("cadre-modale-post-on")
+    cadreModalePostOn.classList.add("cadre-modale-post-off")
+})
+
+
+const croix2 = document.querySelector(".croix2")
+
+croix2.addEventListener("click", ()=>{
+
+    cadreModalePostOn.classList.remove("cadre-modale-post-on")
+    cadreModalePostOn.classList.add("cadre-modale-post-off")
+})

@@ -1,6 +1,3 @@
-// import { recupDataWorks } from "./works"
-// problème message d'erreur avec type MIME interdit
-
 const reponse = await fetch("http://localhost:5678/api/works")
 const elements = await reponse.json()
 
@@ -92,56 +89,11 @@ n'importe où sur l'écran */
 
 
 
+/********** Autre façon pour créer la modale et griser l'arrière plan avec la méthode ".on-click" ************/
+/* création directement dans le html d'une balise <style> */
 
 
 
-
-
- /***********************************************poster une photos sur l'API sans utiliser les objets FormData *****/
-
-// const recuperationToken = window.localStorage.getItem("token")
-
-// const donneesImage = {
-//     "image":  "./assets/images/structures-thermopolis.png" ,
-//     "title": "structures-thermopolis",
-//     "category": "8",
-//   }
-
-// const chargePost = JSON.stringify(donneesImage)
-
-// console.log("la charge : " + chargePost)
-
-// let requetePost = fetch("http://localhost:5678/api/works", 
-// {
-//     method: "POST",
-//     headers: {  accept : "application/json",
-//                 "Content-Type": "multipart/form-data",
-//                 Authorization: `Bearer ${recuperationToken}`
-//             },
-//     body: chargePost
-    
-// })
-
-// let reponseRequete = await requetePost.json()
-// console.log(reponseRequete)
-
-
-
-
-
-
-
- // ce code fonctionne et permet de cliquer sur la croix et fermer la modale
-
-
-//  croix.addEventListener("click", ()=>{
-//      corpsModale.classList.remove("corps-modale-on")
-//      corpsModale.classList.add("corps-modale-off")
-//  })
-
-
-
-/**************************************************************************************/
 
 
 
