@@ -16,6 +16,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <link rel="shortcut icon" href="#">
 
     <script type="module" src="js_scripts/works.js"></script>
     <script type="module" src="js_scripts/connexion.js"></script>
@@ -57,67 +58,12 @@
       }</script>
 
 
-      <style>
-          .the-div-on {
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3000px;
-            z-index: 2;
-            /* opacity: 0; */
-            background-color: rgba(0,0,0,0.4)
-        }
-
-          .corps-modale-on {
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            left: 30%;
-            top: 25%;
-            width: 630px;
-            height: 750px;
-            border: 2px solid;
-            border-color: transparent;
-            background-color: white;
-            border-radius: 10px;
-            box-sizing: border-box;
-            overflow: scroll;
-            z-index: 3;
-          }
-
-          .modale-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
-
-          .corps-modale-on:hover {
-            border-color: #00BFFF;
-            box-sizing: border-box;
-          }
-
-      </style>
-
-
-<!-- Création en pop up de la modale directement avec le "onclick" -->
-      <script defer>
-          const boutonOuvertureModale = document.getElementById("corps-modale")
-          const backgroundModale = document.querySelector(".the-div-on")
-
-            boutonOuvertureModale.onclick = function() {
-                backgroundModale.style.display = "block";
-            }
-
-      </script>
-
   </head>
 
 
   <body>
 
-    <div class="the-div-on"></div> <!--the-div-off-->
+    <!-- <div class="the-div-on"></div> the-div-off -->
 
     <div id="black-header" class="barre-edition-off">
       <svg

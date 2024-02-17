@@ -5,7 +5,6 @@
 
 const reponse = await fetch("http://localhost:5678/api/works")
 const elements = await reponse.json()
-console.log(elements)
 
 let tableau = []
 
@@ -66,6 +65,7 @@ boutonAjouterPhoto.addEventListener("click", (event)=>{
 /************************************Partie POST FormData requête POST*******************************/
 
 const formulaire = document.querySelector(".formulaire")
+const boutonSoumettre = document.querySelector(".bouton-soumettre")
 const leToken = window.localStorage.getItem("token")
 
 formulaire.addEventListener("submit", async (event)=>{
@@ -81,8 +81,11 @@ formulaire.addEventListener("submit", async (event)=>{
         headers : { Authorization : `Bearer ${leToken}`} ,
         body: formData
     })
-    .then(res => res.json())
-    .then(res => console.log(res))
+
+    // const rep = await reponse.json()
+    console.log(reponse)
+    // .then(res => res.json())
+    // .then(res => console.log(res))
 })
 
 
