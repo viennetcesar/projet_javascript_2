@@ -18,45 +18,8 @@
     />
     <link rel="shortcut icon" href="#">
 
-    <script type="module" src="js_scripts/works.js"></script>
-    <script type="module" src="js_scripts/connexion.js"></script>
-    <script type="module" src="js_scripts/modale.js"></script>
-    <script type="module" src="js_scripts/formulaireModale.js"></script>
-    
-    <script>
-      function afficheImageDownloaded(){
-          const imageARemplir = document.querySelector(".image-a-remplir")
-          const imageDownloaded = document.getElementById("image-chargement-input").files[0] // le premier file
-          const reader = new FileReader()
-
-          // les éléments à cacher quand on download la photo
-          const rectangleSvgAjoutPhoto = document.querySelector(".rectangle-svg-ajout-photo")
-          const boutonFile = document.querySelector(".bouton-file")
-          const formatJpg = document.querySelector(".format-jpg")
-      
-          reader.addEventListener("load", ()=>{
-              imageARemplir.src = reader.result
-          }, false)
-      
-          if (imageDownloaded){
-              reader.readAsDataURL(imageDownloaded)
-
-              // mettre en forme la balise image à remplir
-              imageARemplir.classList.remove("image-a-remplir-off")
-              imageARemplir.classList.add("image-a-remplir-on")
-
-              // cacher les éléments 
-              rectangleSvgAjoutPhoto.classList.remove("rectangle-svg-ajout-photo")
-              boutonFile.classList.remove("bouton-file")
-              formatJpg.classList.remove("format-jpg")
-
-              rectangleSvgAjoutPhoto.classList.add("rectangle-svg-ajout-photo-off")
-              boutonFile.classList.add("bouton-file-off")
-              formatJpg.classList.add("format-jpg-off")
-          }
-      
-      }</script>
-
+    <script type="module" src="js_scripts/works.js" defer></script>
+    <script type="module" src="js_scripts/connexion.js" defer></script>
 
   </head>
 

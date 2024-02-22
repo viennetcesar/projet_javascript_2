@@ -1,38 +1,9 @@
+import {coucou, recupDataWorks, creationDOMmodaleEtDeleteWork} from "./service.js"
+
+coucou()
+
 const reponse = await fetch("http://localhost:5678/api/works")
 const elements = await reponse.json()
-console.log(elements)
-
-
-/*Création d'une classe utilisable partout*/
-// export default class Work{
-
-
-function recupDataWorks(elements){
-
-        for (let i=0; i<elements.length; i++){
-    
-            const figure = elements[i]
-            const gallery = document.querySelector(".gallery")
-            const baliseFigure = document.createElement("figure")
-            const category = elements[i].category
-            baliseFigure.dataset.id = elements[i].id
-            const categoryId = elements[i].categoryId
-            const baliseImage = document.createElement("img")
-            baliseImage.src = elements[i].imageUrl
-            const textePhoto = document.createElement("p")
-            textePhoto.innerText = elements[i].title
-            const userId = elements[i].userId
-    
-            gallery.appendChild(baliseFigure)
-            baliseFigure.appendChild(baliseImage)
-            baliseFigure.appendChild(textePhoto)
-        }
-    }
-
-
-
-
-/***************************************************************************************************************/
 
 
 recupDataWorks(elements)
@@ -181,4 +152,267 @@ logger.addEventListener("click", ()=>{
   
 
 
+creationDOMmodaleEtDeleteWork()
 
+
+
+
+
+const lienModale = document.querySelector(".lien-modale") // récupère tout le corps de la modale qui est relié au lien
+const corpsModale = document.getElementById("corps-modale")
+const croix = document.querySelector(".croix")
+
+
+
+/*ce code fonctionne et permet d'ouvrir la modale en cliquant sur "modifier" et fermer ma modale en cliquant
+n'importe où sur l'écran */
+
+ lienModale.addEventListener("click", ()=>{
+    console.log("le corps modale est récupéré")
+    corpsModale.classList.remove("corps-modale-off")
+    corpsModale.classList.add("corps-modale-on")
+    const theDiv = document.createElement("div")
+    theDiv.classList.add("the-div")
+    document.body.appendChild(theDiv)
+    console.log(theDiv)
+
+
+    theDiv.addEventListener("click", ()=>{
+        corpsModale.classList.remove("corps-modale-on")
+        corpsModale.classList.add("corps-modale-off")
+        theDiv.classList.add("the-div-off")
+    })
+ })
+
+
+
+
+/*************************************************** fonction fileReader() *******************************************/
+
+
+// avec window je rends la portée de ma fonction globale
+window.afficheImageDownloaded = function afficheImageDownloaded(){
+
+    const imageARemplir = document.querySelector(".image-a-remplir") // récupère la balise vide dans laquelle placer l'image téléchargée
+    const imageDownloaded = document.getElementById("image-chargement-input").files[0] //récupère le premier file de la balise input file
+    const reader = new FileReader() // crée un objet fileReader
+
+    //récupère les éléments à cacher quand on download la photo
+    const rectangleSvgAjoutPhoto = document.querySelector(".rectangle-svg-ajout-photo")
+    const boutonFile = document.querySelector(".bouton-file")
+    const formatJpg = document.querySelector(".format-jpg")
+
+    // l'attribut result contient une URL de données qui représente les données du fichier.
+    reader.addEventListener("load", ()=>{
+        imageARemplir.src = reader.result   
+    }, false)
+
+    if (imageDownloaded){
+        reader.readAsDataURL(imageDownloaded)
+
+        // mettre en forme la balise image à remplir
+        imageARemplir.classList.remove("image-a-remplir-off")
+        imageARemplir.classList.add("image-a-remplir-on")
+
+        // cacher les éléments présents pour laisser la place à l'image
+        rectangleSvgAjoutPhoto.classList.remove("rectangle-svg-ajout-photo")
+        boutonFile.classList.remove("bouton-file")
+        formatJpg.classList.remove("format-jpg")
+
+        rectangleSvgAjoutPhoto.classList.add("rectangle-svg-ajout-photo-off")
+        boutonFile.classList.add("bouton-file-off")
+        formatJpg.classList.add("format-jpg-off")
+    }
+}
+
+
+// let tableau = []
+
+// for (let elem of elements){
+//     let categ = elem.category.name
+//     tableau.push(categ)
+// }
+
+// let tableauCategoriesUniques = [... new Set(tableau)]
+// // le tableau contient à présent sans aucun doublon les catégories de l'API
+
+
+// // Récupère le champ Select html afin de remplir dynamiquement les catégories pour avoir
+// // exactement les même que celles contenues dans l'API 
+// const selection = document.getElementById("categorie")
+
+// for (let i=0; i<selection.length; i++){
+//     selection[i].value = tableauCategoriesUniques[i]
+//     selection[i].textContent = tableauCategoriesUniques[i]
+// }
+
+
+
+// Le code qui suit permet de récupérer le numéro de la catégorie sur l'API et de la proposer dans une liste déroulante
+
+let tableauNumeroCategorie = []
+
+ for (let item of elements){
+    let categNumero = item.category.id
+    tableauNumeroCategorie.push(categNumero)
+ }
+
+ let tableauNumeroCategorieUnique = [... new Set(tableauNumeroCategorie)]
+ // le tableau contient à présent sans aucun doublon les id des catégories
+
+
+ const selection = document.getElementById("categorie")
+
+ for (let j=0; j<selection.length; j++){
+    selection[j].value = tableauNumeroCategorieUnique[j]
+    selection[j].textContent = tableauNumeroCategorieUnique[j] 
+    parseInt(selection[j].textContent)
+    console.log("le type du merdier est : " + typeof(selection[j].textContent))
+ }
+
+
+
+
+
+
+
+
+
+/******************************************Construction de la Modale POST *********************************************/
+
+
+const boutonAjouterPhoto = document.querySelector(".bouton-ajouter-photo")
+const theDiv = document.querySelector(".the-div")
+
+boutonAjouterPhoto.addEventListener("click", (event)=>{
+    event.preventDefault()
+    const cadreModalePost = document.querySelector(".cadre-modale-post")
+    cadreModalePost.classList.remove("cadre-modale-post-off")
+    cadreModalePost.classList.add("cadre-modale-post-on")
+
+    // on créee une div transparente pour cliquer dessus et fermer la modale POST
+    const theDiv2 = document.createElement("div") 
+    theDiv2.classList.add("the-div2")
+    document.body.appendChild(theDiv2)
+
+    theDiv2.addEventListener("click", ()=>{
+        cadreModalePost.classList.remove("cadre-modale-post-on")
+        cadreModalePost.classList.add("cadre-modale-post-off")
+        theDiv2.classList.add("the-div2-off")
+    })
+})
+
+
+
+/************************************Partie POST FormData requête POST*******************************/
+
+const formulaire = document.querySelector(".formulaire")
+const boutonSoumettre = document.querySelector(".bouton-soumettre")
+const leToken = window.localStorage.getItem("token")
+
+formulaire.addEventListener("submit", async (event)=>{
+
+    event.preventDefault()
+
+    // l'objet FormData prend le formulaire et le formate pour qu'il soit exploitable
+    const formData = new FormData(formulaire) 
+    console.log(formData)
+  
+    const reponse = await fetch('http://localhost:5678/api/works', {
+        method: "POST",
+        headers : { Authorization : `Bearer ${leToken}`} ,
+        body: formData
+    })
+
+    console.log(reponse)
+})
+
+
+/********************************************************************************************** */
+
+
+/* Message d'erreur si le formulaire n'est pas totalement rempli */
+
+const recupFormulaire = document.querySelectorAll(".formulaire input")
+const messageErreurAffichage = document.querySelector(".message-erreur-affichage")
+
+function verifierChamp(champ){
+    if (champ.value ===""){
+        throw new Error(`Le champ ${champ.id} est vide`)
+    }
+}
+
+formulaire.addEventListener("submit", (event)=>{
+    
+    try{
+        event.preventDefault()
+
+        let photoFormulaire = document.getElementById("image-chargement-input")
+        verifierChamp(photoFormulaire)
+
+        let titreFormulaire = document.getElementById("titre")
+        verifierChamp(titreFormulaire)
+
+        let categorieFormulaire = document.getElementById("categorie")
+        verifierChamp(categorieFormulaire)
+
+    }catch(error){
+        messageErreurAffichage.innerText = error.message
+    }
+})
+
+
+messageErreurAffichage.addEventListener("click", ()=>{
+    messageErreurAffichage.innerText = ""
+})
+
+
+
+
+
+/*************************** remplir image après download ****************************/
+/*code direct dans la page html dans une balise script */
+
+/*faire apparaître à nouveau les éléments cachés en cliquant sur la photo downloadée*/
+
+const imageARemplir = document.querySelector(".image-a-remplir")
+const rectangleSvgAjoutPhoto = document.querySelector(".rectangle-svg-ajout-photo")
+const boutonFile = document.querySelector(".bouton-file")
+const formatJpg = document.querySelector(".format-jpg")
+
+imageARemplir.addEventListener("click", ()=>{
+
+    rectangleSvgAjoutPhoto.classList.remove("rectangle-svg-ajout-photo-off")
+    boutonFile.classList.remove("bouton-file-off")
+    formatJpg.classList.remove("format-jpg-off")
+
+    rectangleSvgAjoutPhoto.classList.add("rectangle-svg-ajout-photo")
+    boutonFile.classList.add("bouton-file")
+    formatJpg.classList.add("format-jpg")
+
+    imageARemplir.classList.remove("image-a-remplir-on")
+    imageARemplir.classList.add("image-a-remplir-off")
+})
+
+
+
+
+/****************************** Revenir en arrière sur la modale précédente en fermant la modale POST *******/
+
+const svgFlecheBack = document.querySelector(".svg-fleche-back")
+const cadreModalePostOn = document.querySelector(".cadre-modale-post")
+
+svgFlecheBack.addEventListener("click", ()=>{
+
+    cadreModalePostOn.classList.remove("cadre-modale-post-on")
+    cadreModalePostOn.classList.add("cadre-modale-post-off")
+})
+
+
+const croix2 = document.querySelector(".croix2")
+
+croix2.addEventListener("click", ()=>{
+
+    cadreModalePostOn.classList.remove("cadre-modale-post-on")
+    cadreModalePostOn.classList.add("cadre-modale-post-off")
+})

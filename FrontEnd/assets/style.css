@@ -354,11 +354,11 @@ label {
 	width: 179px;
 	height: 36px;
 	border-radius: 60px;
+	border: none;
 }
 
 .se-connecter:hover{
-	color: #1D6154;
-	background-color: white;
+	opacity: 0.8;
 }
 
 .mdp-oublie {
